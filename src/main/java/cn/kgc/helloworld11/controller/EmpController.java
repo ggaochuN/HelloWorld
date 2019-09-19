@@ -63,6 +63,7 @@ public class EmpController {
         jobs.add(new Prop("2","菜鸡2"));
         jobs.add(new Prop("3","菜鸡3"));
         model.addAttribute("jobs",jobs);
+        System.out.println("hello");
         return "emp";
     }
     @PostMapping("/chong")
