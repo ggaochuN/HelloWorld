@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+    <script>
+       $(function () {
+           alert("123");
+           $("#name1").blur(function(){
+               alert("qwe");
+           });
+       })
+    </script>
+</head>
+<body>
+
+<form th:action="@{/emp}" th:object="${emp}" method="post">
+    <div th:if="${emp.id == null}">
+        <h1>新增员工</h1>
+    </div>
+    <div th:if="${emp.id != null}">
+        <h1>修改员工</h1>
+        <input type="hidden" name="_method" value="PUT">
+        <input type="hidden" th:field="*{id}">
+    </div>
+
+    <p>姓名：<input type="text" id="name1" th:field="*{name}"><span id="chong">asd</span></p>
+    <p>性别：
+        <span th:each="sex:${sexs}">
+                <input type="radio" th:field="*{sex}" th:value="${sex.key}">
+                <span th:text="${sex.value}"></span>
+            </span>
+    </p>
+    <p>年龄：<input th:field="*{age}" type="text"></p>
+    <p>工资：<input th:field="*{sal}" type="text"></p>
+    <p>生日：<input th:field="*{birthday}" type="text"></p>
+    <p>职位：
+        <select th:field="*{jobDesc}">
+            <option th:each="job:${jobs}" th:value="${job.key}">
+                <span th:text="${job.value}"></span>
+            </option>
+        </select>
+    </p>
+    <button>保存</button>
+</form>
+</body>
+</html>

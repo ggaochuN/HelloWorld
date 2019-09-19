@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql3310://192.168.255.129:3306/db1904
+  devtools:
+    restart:
+      enabled: true
+  thymeleaf:
+    cache: false
+logging:
+  level:
+    cn.kgc.mapper: debug
